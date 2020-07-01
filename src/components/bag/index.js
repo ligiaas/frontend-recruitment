@@ -5,7 +5,7 @@ import { StyledBag } from './bag.styled'
 const Bag = () => {
   return (
     <StyledBag>
-      <Header />
+      <Header number={0} />
     </StyledBag>
   )
 }

@@ -1,14 +1,29 @@
 import React from 'react'
-import { StyledHeader, StyledTitle } from './header.styled'
-import Logo from '../../assets/bag.svg'
+import PropTypes from 'prop-types'
+import { StyledHeader, StyledLogo, StyledTitle, StyledCounter } from './header.styled'
 
-const Header = () => {
+const Header = ({number}) => {
   return (
       <StyledHeader>
-        <img src={Logo} alt=""/>
+        <StyledLogo>
+          {
+            number > 0 && 
+            <StyledCounter>
+              <span>{number}</span>
+            </StyledCounter>
+          }
+        </StyledLogo>
         <StyledTitle>sacola</StyledTitle>
       </StyledHeader>
   )
 }
+
+Header.default = {
+  number: 0
+};
+
+Header.propType = {
+  number: PropTypes.number,
+};
 
 export default Header
