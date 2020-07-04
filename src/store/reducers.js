@@ -2,17 +2,18 @@ import {
   FETCH_PRODUCTS_REQUESTED,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILED,
-} from './actions'
+  ADD_TOBAG,
+  REMOVE_TOBAG,
+} from './constants'
 
-export const initialState = { 
+export const initialState = {
   products: [],
   loading: false,
   error: null
 }
 
-export default function productReducer(state = initialState, action) {
-  console.log(state)
-  switch(action.type) {
+export default function productReducer(state = initialState, { type, payload }) {
+  switch(type) {
     case FETCH_PRODUCTS_REQUESTED: {
       return {
         ...state,
@@ -25,9 +26,7 @@ export default function productReducer(state = initialState, action) {
     case FETCH_PRODUCTS_SUCCESS: {
       return {
         ...state,
-        products: [
-          action.payload,
-        ],
+        products: payload,
         loading: false,
         error: null,
       }
@@ -36,11 +35,10 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         products: null,
-        error: action.payload,
+        error: payload,
         loading: false,
       }
     }
-
     default:
       return state;
   }

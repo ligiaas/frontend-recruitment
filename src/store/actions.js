@@ -5,24 +5,22 @@ import {
   ADD_TOBAG,
   REMOVE_TOBAG } from './constants'
 
-import { getProductsApi } from 'http/';
+// import { getProductsApi } from 'http/';
 
-export const fetchProducts = () => async (
-  dispatch,
-) => {
-  try {
+export function fetchProducts() {
+  return function(dispatch) {
     dispatch({
-      type: FETCH_PRODUCTS_REQUESTED,
-    });
-    const response = await getProductsApi();
-    dispatch({
-      type: FETCH_PRODUCTS_SUCCESS,
-      payload: response,
-    });
-  } catch (err) {
-    dispatch({
-      type: FETCH_PRODUCTS_FAILED,
-      payload: 'err',
-    });
+      type: FETCH_PRODUCTS_REQUESTED
+    })
+    fetch('/data/products.json')
+      .then(res => res.json())
+      .then(data => dispatch({
+        type: FETCH_PRODUCTS_SUCCESS,
+        payload: data.products
+      }))
+      .catch(error => dispatch({
+        type: FETCH_PRODUCTS_FAILED,
+        payload: error
+      }))
   }
-};
+}

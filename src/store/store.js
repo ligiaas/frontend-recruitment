@@ -1,27 +1,21 @@
-import {
-  FETCH_PRODUCTS_REQUESTED,
-  FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_FAILED,
-} from './contants'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import productReducer from './reducers'
 
-import { getProductsApi } from 'http/';
+let composeEnhancers = compose;
 
-export const fetchProducts = () => async (
-  dispatch,
-) => {
-  try {
-    dispatch({
-      type: FETCH_PRODUCTS_REQUESTED,
-    });
-    const response = await getProductsApi();
-    dispatch({
-      type: FETCH_PRODUCTS_SUCCESS,
-      payload: response.products,
-    });
-  } catch (err) {
-    dispatch({
-      type: FETCH_PRODUCTS_FAILED,
-      payload: err,
-    });
-  }
-};
+if (window && process.env.NODE_ENV === 'development') {
+  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+}
+
+// const rootReducer = combineReducers({
+//   products: productReducer,
+//  outroReucer,
+// })
+
+const store = createStore(
+  productReducer,
+  composeEnhancers(applyMiddleware(thunkMiddleware))
+);
+
+export default store;
