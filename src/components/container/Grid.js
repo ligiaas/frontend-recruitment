@@ -1,4 +1,6 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+// import { fetchProducts } from '../../store/store';
 import PropTypes from 'prop-types'
 import { StyledGrid } from '../StyledGrid'
 import { StyledImage } from '../StyledImage'
@@ -9,17 +11,34 @@ import Product from './Product'
 import Camisa from '../../assets/camisa-listra-pb.jpg'
 
 const Grid = () => {
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    fetch('/data/products.json', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(data => {setProducts(data.products)})
-  }, [])
+
+  const products = useSelector(
+    state => state.products,
+    products => products,
+  );
+  
+  const loading = useSelector(
+    state => state.loading,
+    loading => loading,
+  );
+  
+  const error = useSelector(
+    state => state.error,
+    error => error,
+  );
+  
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchProducts());
+  // }, [dispatch]);
+
+  if (loading) {
+    return (<StyledParagraph>loading...</StyledParagraph>)
+  }
+  
+  if (error) {
+    return (<StyledParagraph>ooops!</StyledParagraph>)
+  }
   
   return (
     <StyledGrid>
