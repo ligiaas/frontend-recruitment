@@ -1,26 +1,28 @@
-import { actions } from './constants'
+import {
+  FETCH_PRODUCTS_REQUESTED,
+  FETCH_PRODUCTS_SUCCESS,
+  FETCH_PRODUCTS_FAILED,
+  ADD_TOBAG,
+  REMOVE_TOBAG } from './constants'
 
-export const FETCH_PRODUCTS_REQUESTED = actions.FETCH_PRODUCTS_REQUESTED
-export const FETCH_PRODUCTS_SUCCESS = actions.FETCH_PRODUCTS_SUCCESS
-export const FETCH_PRODUCTS_FAILED = actions.FETCH_PRODUCTS_FAILED
+import { getProductsApi } from 'http/';
 
-export function fetchProductsRequested(payload) {
-  return {
-    type: FETCH_PRODUCTS_REQUESTED,
-    payload
+export const fetchProducts = () => async (
+  dispatch,
+) => {
+  try {
+    dispatch({
+      type: FETCH_PRODUCTS_REQUESTED,
+    });
+    const response = await getProductsApi();
+    dispatch({
+      type: FETCH_PRODUCTS_SUCCESS,
+      payload: response,
+    });
+  } catch (err) {
+    dispatch({
+      type: FETCH_PRODUCTS_FAILED,
+      payload: 'err',
+    });
   }
-}
-
-export function fetchProductsSuccess(payload) {
-  return {
-    type: FETCH_PRODUCTS_SUCCESS,
-    payload
-  }
-}
-
-export function fetchProductsFailed(payload) {
-  return {
-    type: FETCH_PRODUCTS_FAILED,
-    payload
-  }
-}
+};
