@@ -2,8 +2,18 @@ import {
   FETCH_PRODUCTS_REQUESTED,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILED,
-  ADD_TOBAG,
-  REMOVE_TOBAG } from './constants'
+
+  BAG_ADD_PRODUCT,
+  BAG_ADD_PRODUCT_SUCCESS,
+  BAG_ADD_PRODUCT_FAILED,
+
+  BAG_LIST_PRODUCT,
+  BAG_LIST_PRODUCT_FAILED,
+  BAG_LIST_PRODUCT_SUCCESS,
+
+  BAG_REMOVE_PRODUCT,
+  BAG_REMOVE_PRODUCT_FAILED,
+  BAG_REMOVE_PRODUCT_SUCCESS } from './constants'
 
 // import { getProductsApi } from 'http/';
 
@@ -24,3 +34,18 @@ export function fetchProducts() {
       }))
   }
 }
+
+export const bagAddProduct = payload => ({
+  type: BAG_ADD_PRODUCT,
+  payload
+})
+
+export const bagRemoveProduct = idx => ({
+  type: BAG_REMOVE_PRODUCT,
+  idx
+})
+
+export const bagListProduct = payload => ({
+  type: BAG_LIST_PRODUCT,
+  payload
+})
