@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
 const StyledBar = styled.div`
-  color: ${props => props.color};
+  background-color: ${props => props.color};
   display: block;
   height: ${props => props.height};
+  margin: 5px 0;
+  position: relative;
   width: ${props => props.width};
 `
 
