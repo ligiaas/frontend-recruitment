@@ -1,29 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledHeader, StyledLogo, StyledTitle, StyledCounter } from '../StyledHeader'
+import { StyledHeader, StyledIcon, StyledTitle, StyledCounter } from '../StyledHeader'
 
-const Header = ({number}) => {
+const Header = ({counter}) => {
   return (
       <StyledHeader>
-        <StyledLogo>
+        <StyledIcon>
           {
-            number > 0 && 
+            counter > 0 && 
             <StyledCounter>
-              <span>{number}</span>
+              <span>{counter}</span>
             </StyledCounter>
           }
-        </StyledLogo>
+        </StyledIcon>
         <StyledTitle>sacola</StyledTitle>
       </StyledHeader>
   )
 }
 
 Header.default = {
-  number: 0
+  counter: 0
 };
 
 Header.propType = {
-  number: PropTypes.number,
+  counter: PropTypes.number,
 };
 
 export default Header
