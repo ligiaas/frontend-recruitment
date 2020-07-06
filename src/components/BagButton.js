@@ -1,12 +1,20 @@
 import React from 'react';
-import { StyledBagButton } from './StyledBagButton';
+import PropTypes from 'prop-types'
+import { StyledBagButton } from '../ui/StyledBagButton';
+import { StyledIcon } from '../ui/StyledIcon';
 
-const BagButton = ({ children, open, setOpen }) => {
+const BagButton = ({ open, setOpen }) => {
   return (
     <StyledBagButton open={open} onClick={() => setOpen(!open)}>
-      {children}
+      <StyledIcon bgcolor="#dfbd00" height={30} margin={10} width={30} />
     </StyledBagButton>
   )
+}
+
+BagButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired
 }
 
 export default BagButton;

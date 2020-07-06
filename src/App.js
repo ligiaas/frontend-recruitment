@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import Bag from '../src/components/container/Bag'
+import Bag from '../src/container/Bag'
 import BagButton from '../src/components/BagButton'
-import Grid from '../src/components/container/Grid'
+import Grid from '../src/container/Grid'
 
 function App() {
   const [open, setOpen] = useState(false)
 
   return (
     <>
-      <Grid>
-        <h1 style={{color: '#000'}}>HOME</h1>
-      </Grid>
+      <Grid />
       <BagButton open={open} setOpen={setOpen} />
       <Bag open={open} setOpen={setOpen} />
     </>
