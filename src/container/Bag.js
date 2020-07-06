@@ -32,7 +32,7 @@ const Bag = ({ open }) => {
   }
 
   return (
-    <StyledBag open={open} height={screen.height} width={widthSize}>
+    <StyledBag open={open} height={screen.height} width={open ? widthSize : 0}>
       <Header counter={products.length} />
       {
         products && products.map((item, index) => (

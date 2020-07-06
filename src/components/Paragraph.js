@@ -13,14 +13,14 @@ const Paragraph = ({ align, children, color, size }) => {
 Paragraph.default = {
   align: 'left',
   color: '#313135',
-  size: '16px'
+  size: 16
 }
 
 Paragraph.propTypes = {
   align: PropTypes.string,
   children: PropTypes.node.isRequired,
   color: PropTypes.string,
-  size: PropTypes.string
+  size: PropTypes.number
 }
 
 export default Paragraph

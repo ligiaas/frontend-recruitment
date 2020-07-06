@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 
-export const StyledBagButton = styled.button`
+const StyledBagButton = styled.button`
+  align-items: center;
   background: #313135;
+  border: none;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 2rem;
-  justify-content: space-around;
+  justify-content: center;
   right: 2rem;
   padding: 0;
   position: absolute;
@@ -24,13 +26,6 @@ export const StyledBagButton = styled.button`
     background: #dfbd00;
   }
 
-  div {
-    background: #313135;
-    border-radius: 10px;
-    height: 0.25rem;
-    position: relative;
-    transition: all 0.3s linear;
-    transform-origin: 1px;
-    width: 2rem;
-  }
-`;
+`
+
+export { StyledBagButton }

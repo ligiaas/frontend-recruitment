@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   &:hover {
     background-color: ${props => props.hvbgcolor};
     border: ${props => (props.hvborder ? props.hvborder : 'none')};
-    color: ${props => props.hvcolor};  
+    color: ${props => props.hvcolor};
   }
 `
 

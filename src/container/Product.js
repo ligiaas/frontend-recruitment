@@ -11,7 +11,7 @@ const Product = ({ children, product }) => {
 
   const [showModal, updateShowModal] = useState(false)
   const [size, setSize] = useState('')
-  const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState(1)
 
   const dispatch = useDispatch()
 
@@ -20,13 +20,14 @@ const Product = ({ children, product }) => {
   }
 
   const sendToBag = () => {
-    console.log({size, product, amount})
-    dispatch({
-      type: 'BAG_ADD_PRODUCT',
-      payload: {size, product, amount}
-    })
-    handleCloseModal()
-    reset()
+    if (size && amount >= 1) {
+      dispatch({
+        type: 'BAG_ADD_PRODUCT',
+        payload: {size, product, amount}
+      })
+      handleCloseModal()
+      reset()
+    }
   }
 
   const reset = () => {
@@ -57,7 +58,7 @@ const Product = ({ children, product }) => {
         <Paragraph align="left" color="#fff">Quantidade</Paragraph>
         <BodyModal>
           <StyledButton color="#dfbd00" onClick={() => setAmount(amount <= 0 ? 0 : amount - 1)} type="button"  size="30px">-</StyledButton>
-          <Paragraph color="#dfbd00" size="30px">{amount}</Paragraph>
+          <Paragraph color="#dfbd00" size={30}>{amount}</Paragraph>
           <StyledButton color="#dfbd00" onClick={() => setAmount(amount + 1)} type="button" size="30px">+</StyledButton>
         </BodyModal>
       </Modal>
@@ -67,7 +68,7 @@ const Product = ({ children, product }) => {
 
 Product.propTypes = {
   children: PropTypes.node.isRequired,
-  product: PropTypes.string.isRequired
+  product: PropTypes.object.isRequired
 }
 
 export default Product
