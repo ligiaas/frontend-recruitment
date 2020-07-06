@@ -1,20 +1,21 @@
 import styled from 'styled-components'
 
 export const StyledBagButton = styled.button`
-  background: transparent;
-  border: none;
+  background: #313135;
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 2rem;
   justify-content: space-around;
-  left: 2rem;
+  right: 2rem;
   padding: 0;
   position: absolute;
   top: 5%;
+  transition: all 0.3s linear;
   width: 2rem;
   z-index: 10;
-  
+
   &:focus {
     outline: none;
   }
@@ -22,8 +23,9 @@ export const StyledBagButton = styled.button`
   &:hover {
     background: #dfbd00;
   }
-  
+
   div {
+    background: #313135;
     border-radius: 10px;
     height: 0.25rem;
     position: relative;

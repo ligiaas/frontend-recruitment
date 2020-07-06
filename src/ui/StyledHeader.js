@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import IconBag from '../assets/bag.svg'
+import { StyledIcon } from './StyledIcon'
 
 const StyledHeader = styled.div`
   align-items: center;
@@ -8,9 +8,7 @@ const StyledHeader = styled.div`
   justify-content: center;
 `
 
-const StyledIcon = styled.div`
-  background-image: url(${IconBag});
-  background-repeat: no-repeat;
+const StyledHeaderIcon = styled(StyledIcon)`
   height: 40px;
   margin: 0 25px;
   width: 33px;
@@ -44,4 +42,4 @@ const StyledCounter = styled.div`
   }
 `
 
-export { StyledHeader, StyledIcon, StyledTitle, StyledCounter }
+export { StyledHeader, StyledHeaderIcon, StyledTitle, StyledCounter }

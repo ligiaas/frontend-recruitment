@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledParagraph } from '../StyledParagraph'
+import { StyledParagraph } from '../ui/StyledParagraph'
 
 const Paragraph = ({ align, children, color, size }) => {
   return (
@@ -16,7 +16,7 @@ Paragraph.default = {
   size: '16px'
 }
 
-Paragraph.Proptype = {
+Paragraph.propTypes = {
   align: PropTypes.string,
   children: PropTypes.node.isRequired,
   color: PropTypes.string,

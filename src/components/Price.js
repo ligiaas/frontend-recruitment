@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledPrice } from '../StyledPrice'
+import { StyledPrice } from '../ui/StyledPrice'
 
 const Price = ({ color, value }) => {
   const str = value.toString()
@@ -20,7 +20,7 @@ Price.default = {
   weight: 'normal'
 }
 
-Price.Proptype = {
+Price.propTypes = {
   value: PropTypes.string.isRequired,
   color: PropTypes.string,
   size: PropTypes.string

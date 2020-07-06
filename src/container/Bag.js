@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { bagListProduct, bagRemoveProduct } from '../../store/actions';
-import useWindowSize from '../../utils/use-window-size'
-import Header from './Header'
-import { StyledBag } from '../StyledBag'
-import Paragraph from './Paragraph';
+import { bagListProduct, bagRemoveProduct } from '../store/actions';
+import Proptypes from 'prop-types';
+import useWindowSize from '../utils/use-window-size';
+import Header from '../components/Header';
+import { StyledBag } from '../ui/StyledBag';
+import Paragraph from '../components/Paragraph';
 
 const Bag = ({ open }) => {
 
   const screen = useWindowSize()
-  const size = screen.width - (screen.width * 0.20)
+  const widthSize = screen.width - (screen.width * 0.35)
 
   const products = useSelector(state => state.bag.products)
   const loading = useSelector(state => state.loading);
@@ -25,17 +26,17 @@ const Bag = ({ open }) => {
 
   if (error) { return 'ooops!' }
 
-  const deleteProduct = id => {
-    console.log(id)
-    dispatch(bagRemoveProduct(id))
+  const deleteProduct = product => {
+    console.log(product)
+    dispatch(bagRemoveProduct(product))
   }
 
   return (
-    <StyledBag open={open} width={`${size}px`}>
+    <StyledBag open={open} height={screen.height} width={widthSize}>
       <Header counter={products.length} />
       {
         products && products.map((item, index) => (
-          <div key={index} onClick={() => deleteProduct(index)} style={{outline: '1px solid #dfbd00'}}>
+          <div key={index} onClick={() => deleteProduct(item)}>
             <Paragraph color="#fff">{item.product.title}</Paragraph>
             <Paragraph color="#fff">{item.size}</Paragraph>
             <Paragraph color="#fff">{item.amount}</Paragraph>
@@ -44,6 +45,10 @@ const Bag = ({ open }) => {
       }
     </StyledBag>
   )
+}
+
+Bag.propTypes = {
+  open: Proptypes.bool.isRequired
 }
 
 export default Bag

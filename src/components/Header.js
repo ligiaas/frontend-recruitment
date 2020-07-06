@@ -1,18 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledHeader, StyledIcon, StyledTitle, StyledCounter } from '../StyledHeader'
+import { StyledHeader, StyledHeaderIcon, StyledTitle, StyledCounter } from '../ui/StyledHeader'
 
 const Header = ({counter}) => {
   return (
       <StyledHeader>
-        <StyledIcon>
+        <StyledHeaderIcon>
           {
-            counter > 0 && 
+            counter > 0 &&
             <StyledCounter>
               <span>{counter}</span>
             </StyledCounter>
           }
-        </StyledIcon>
+        </StyledHeaderIcon>
         <StyledTitle>sacola</StyledTitle>
       </StyledHeader>
   )
@@ -22,7 +22,7 @@ Header.default = {
   counter: 0
 };
 
-Header.propType = {
+Header.propTypes = {
   counter: PropTypes.number,
 };
 

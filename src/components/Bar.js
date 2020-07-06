@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledBar } from './bar.styled'
+import { StyledBar } from '../ui/StyledBar'
 
 const Bar = ({ color, height, width }) => {
 
@@ -9,7 +9,7 @@ const Bar = ({ color, height, width }) => {
   )
 }
 
-Bar.Proptype = {
+Bar.propTypes = {
   color: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired

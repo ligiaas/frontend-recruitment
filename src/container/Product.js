@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
-import Paragraph from './Paragraph'
-import { StyledProduct } from '../StyledProduct'
-import { StyledButton } from '../StyledButton'
-import { BodyModal, StyledSize } from '../StyledModal'
-import Modal from './Modal'
+import Paragraph from '../components/Paragraph'
+import { StyledProduct } from '../ui/StyledProduct'
+import { StyledButton } from '../ui/StyledButton'
+import { BodyModal, StyledSize } from '../ui/StyledModal'
+import Modal from '../components/Modal'
 
 const Product = ({ children, product }) => {
 
   const [showModal, updateShowModal] = useState(false)
   const [size, setSize] = useState('')
   const [amount, setAmount] = useState(0)
-  const [itemBag, setItemBag] = useState({})
 
   const dispatch = useDispatch()
 
@@ -66,7 +65,7 @@ const Product = ({ children, product }) => {
   )
 }
 
-Product.Proptype = {
+Product.propTypes = {
   children: PropTypes.node.isRequired,
   product: PropTypes.string.isRequired
 }

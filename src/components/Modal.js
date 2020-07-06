@@ -6,7 +6,7 @@ import {
   Content,
   ModalContainer,
   StyledCenter
-} from '../StyledModal'
+} from '../ui/StyledModal'
 
 const Modal = ({ close, children, confirmationAction, openModal }) => {
   return (
