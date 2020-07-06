@@ -17,25 +17,7 @@ import {
 } from './constants'
 
 export const initialStateBag = {
-  products: [
-    {
-      size: 'G',
-      product: {
-        "id": 0,
-        "sku": 8552515751438644,
-        "title": "Camisa Nike Corinthians I",
-        "description": "14/15 s/nº",
-        "availableSizes": ["S", "G", "GG", "GGG"],
-        "style": "Branco com listras pretas",
-        "price": 229.9,
-        "installments": 9,
-        "currencyId": "BRL",
-        "currencyFormat": "R$",
-        "isFreeShipping": true
-      },
-      amount: 2
-    }
-  ]
+  products: []
 }
 
 const initialStateProducts = {
@@ -76,6 +58,13 @@ export function productReducer(state = initialStateProducts, { type, payload }) 
   }
 }
 
+const removeProduct = (products, productToRemove) => {
+  const newProducts = [ ...products ];
+  const idxToRemove = newProducts.indexOf(productToRemove);
+  newProducts.splice(idxToRemove, 1);
+  return newProducts;
+}
+
 export function bagReducer(state = initialStateBag, { type, payload }) {
   switch(type) {
     case BAG_ADD_PRODUCT: {
@@ -92,10 +81,7 @@ export function bagReducer(state = initialStateBag, { type, payload }) {
     case BAG_REMOVE_PRODUCT: {
       return {
         ...state,
-        products: [ state.products.filter(item =>
-            item.product.id !== payload
-          )
-        ],
+        products: removeProduct(state.products, payload),
         error: null,
         loading: false
       }

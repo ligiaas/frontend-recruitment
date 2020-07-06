@@ -40,9 +40,9 @@ export const bagAddProduct = payload => ({
   payload
 })
 
-export const bagRemoveProduct = idx => ({
+export const bagRemoveProduct = payload => ({
   type: BAG_REMOVE_PRODUCT,
-  idx
+  payload
 })
 
 export const bagListProduct = payload => ({
