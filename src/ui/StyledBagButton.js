@@ -12,7 +12,7 @@ const StyledBagButton = styled.button`
   justify-content: center;
   right: 2rem;
   padding: 0;
-  position: absolute;
+  position: fixed;
   top: 5%;
   transition: all 0.3s linear;
   width: 2rem;

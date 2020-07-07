@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { StyledBagButton } from '../ui/StyledBagButton';
 import { StyledIcon } from '../ui/StyledIcon';
-import Paragraph from '../components/Paragraph'
 import IconBag from '../assets/bag.svg'
+import IconX from '../assets/x.png'
 
-const BagButton = ({ open, setOpen }) => {
+const BagButton = ({ open, onClick }) => {
   return (
-    <StyledBagButton open={open} onClick={() => setOpen(!open)}>
+    <StyledBagButton open={open} onClick={() => onClick(!open)}>
       {
-        open ? <Paragraph color="#fff" size={20}>X</Paragraph>
+        open ?  <StyledIcon height={15} margin={0} src={IconX} width={15} />
         : <StyledIcon height={20} margin={0} src={IconBag} width={35} />
       }
     </StyledBagButton>
@@ -18,7 +18,7 @@ const BagButton = ({ open, setOpen }) => {
 
 BagButton.propTypes = {
   open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 }
 
 export default BagButton;

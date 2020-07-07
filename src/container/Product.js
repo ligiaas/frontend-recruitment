@@ -1,16 +1,23 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
+
 import Paragraph from '../components/Paragraph'
+import Modal from '../components/Modal'
+import Price from '../components/Price'
+
+import { StyledImage } from '../ui/StyledImage'
+import { StyledBar } from '../ui/StyledBar'
 import { StyledProduct } from '../ui/StyledProduct'
 import { StyledButton } from '../ui/StyledButton'
 import { BodyModal, StyledSize } from '../ui/StyledModal'
-import Modal from '../components/Modal'
+import { images }from '../utils/images'
 
-const Product = ({ children, product }) => {
+const Product = ({ product }) => {
 
   const [showModal, updateShowModal] = useState(false)
   const [size, setSize] = useState('')
+  const [request, setRequest] = useState({})
   const [amount, setAmount] = useState(1)
 
   const dispatch = useDispatch()
@@ -20,10 +27,11 @@ const Product = ({ children, product }) => {
   }
 
   const sendToBag = () => {
+    setRequest({size, product, amount, image: images[product.id]})
     if (size && amount >= 1) {
       dispatch({
         type: 'BAG_ADD_PRODUCT',
-        payload: {size, product, amount}
+        payload: {size, product, amount, image: images[product.id]}
       })
       handleCloseModal()
       reset()
@@ -43,7 +51,15 @@ const Product = ({ children, product }) => {
   return (
     <>
       <StyledProduct onClick={handleOpenModal}>
-        {children}
+        <StyledImage alt={product.title} height={230} src={images[product.id]} width={180} />
+        <Paragraph align='center'>{product.title}</Paragraph>
+        <StyledBar color='#dfbd00' height='3px' width='15px'></StyledBar>
+        <Paragraph align='center'>
+          R$ <Price value={product.price} />
+        </Paragraph>
+        { product.installments > 0 &&
+          <Paragraph color="#95959d">ou {product.installments} x R$ {(product.price % product.installments).toFixed(2)}</Paragraph>
+        }
       </StyledProduct>
 
       <Modal close={handleCloseModal} confirmationAction={sendToBag} openModal={showModal}>
@@ -67,7 +83,6 @@ const Product = ({ children, product }) => {
 }
 
 Product.propTypes = {
-  children: PropTypes.node.isRequired,
   product: PropTypes.object.isRequired
 }
 

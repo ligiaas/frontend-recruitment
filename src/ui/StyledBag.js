@@ -10,10 +10,9 @@ const StyledBag = styled.div`
   justify-content: flex-start;
   opacity: ${({ open }) => (open ? 1 : 0 )};
   padding: 50px 25px;
-  position: absolute;
+  position: ${({ open }) => (open ? 'fixed' : 'absolute')};
   right: 0;
   overflow-x: hidden;
-  top: 0;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
   transition: all 0.3s ease-in-out;
   width: ${props => props.width}px;

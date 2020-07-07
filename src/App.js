@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Grid />
-      <BagButton open={open} setOpen={setOpen} />
+      <BagButton open={open} onClick={setOpen} />
       <Bag open={open} setOpen={setOpen} />
     </>
   );

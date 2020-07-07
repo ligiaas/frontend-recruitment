@@ -29,9 +29,9 @@ const StyledCounter = styled.div`
   display: flex;
   height: 19px;
   justify-content: center;
-  left: 20px;
+  left: -38px;
   position: relative;
-  top: 27px;
+  top: 15px;
   width: 19px;
   > span {
     color: #313135;

@@ -6,11 +6,13 @@ import useWindowSize from '../utils/use-window-size';
 import Header from '../components/Header';
 import { StyledBag } from '../ui/StyledBag';
 import Paragraph from '../components/Paragraph';
+import BagItem from '../components/BagItem'
 
 const Bag = ({ open }) => {
 
+  const [delected, setDelected] = useState(false)
   const screen = useWindowSize()
-  const widthSize = screen.width - (screen.width * 0.35)
+  const widthSize = screen.width - (screen.width * 0.4)
 
   const products = useSelector(state => state.bag.products)
   const loading = useSelector(state => state.loading);
@@ -27,6 +29,7 @@ const Bag = ({ open }) => {
   if (error) { return 'ooops!' }
 
   const deleteProduct = product => {
+    setDelected(true)
     console.log(product)
     dispatch(bagRemoveProduct(product))
   }
@@ -36,13 +39,10 @@ const Bag = ({ open }) => {
       <Header counter={products.length} />
       {
         products && products.map((item, index) => (
-          <div key={index} onClick={() => deleteProduct(item)}>
-            <Paragraph color="#fff">{item.product.title}</Paragraph>
-            <Paragraph color="#fff">{item.size}</Paragraph>
-            <Paragraph color="#fff">{item.amount}</Paragraph>
-          </div>
+          <BagItem key={index} onClick={() => deleteProduct(item)} remove={delected} request={item} />
         ))
       }
+
     </StyledBag>
   )
 }
