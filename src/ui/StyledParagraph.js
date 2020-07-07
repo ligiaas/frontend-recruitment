@@ -5,6 +5,7 @@ const StyledParagraph = styled.p`
   font-size: ${props => props.size}px;
   line-height: 1.2;
   text-align: ${props => props.align};
-  text-decoration: ${props => (props.decoration ? 'line-through' : 'none')}
+  text-decoration: ${props => props.decoration};
+  text-transform: ${props => props.transform};
 `
 export { StyledParagraph }

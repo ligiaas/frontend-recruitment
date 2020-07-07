@@ -58,7 +58,7 @@ const Product = ({ product }) => {
           R$ <Price value={product.price} />
         </Paragraph>
         { product.installments > 0 &&
-          <Paragraph color="#95959d">ou {product.installments} x R$ {(product.price % product.installments).toFixed(2)}</Paragraph>
+          <Paragraph color="#95959d">ou {product.installments} x R$ {(product.price / product.installments).toFixed(2)}</Paragraph>
         }
       </StyledProduct>
 
@@ -73,9 +73,23 @@ const Product = ({ product }) => {
         </BodyModal>
         <Paragraph align="left" color="#fff">Quantidade</Paragraph>
         <BodyModal>
-          <StyledButton color="#dfbd00" onClick={() => setAmount(amount <= 0 ? 0 : amount - 1)} type="button"  size="30px">-</StyledButton>
+          <StyledButton
+            color="#dfbd00"
+            onClick={() => setAmount(amount <= 0 ? 0 : amount - 1)}
+            type="button"
+            size="30px"
+          >
+            -
+          </StyledButton>
           <Paragraph color="#dfbd00" size={30}>{amount}</Paragraph>
-          <StyledButton color="#dfbd00" onClick={() => setAmount(amount + 1)} type="button" size="30px">+</StyledButton>
+          <StyledButton
+            color="#dfbd00"
+            onClick={() => setAmount(amount + 1)}
+            type="button"
+            size="30px"
+          >
+            +
+          </StyledButton>
         </BodyModal>
       </Modal>
     </>
