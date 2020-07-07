@@ -14,7 +14,7 @@ const StyledBag = styled.div`
   right: 0;
   overflow-x: hidden;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s linear;
   width: ${props => props.width}px;
   max-width: 1200px;
   z-index: 1;

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../store/actions'
+import PropTypes from 'prop-types'
 import { StyledGrid } from '../ui/StyledGrid'
 import Paragraph from '../components/Paragraph'
 import Product from './Product'
 
-const Grid = () => {
+const Grid = ({ setOpen }) => {
   const products = useSelector(state => state.products.products);
   const loading = useSelector(state => state.loading);
   const error = useSelector(state => state.error);
@@ -17,7 +18,7 @@ const Grid = () => {
 
   return (
     <div>
-      <StyledGrid id="grid">
+      <StyledGrid onMouseOver={() => setOpen(false)}>
         {
           error && ( <Paragraph>Oooops!</Paragraph> )
         }
@@ -32,6 +33,10 @@ const Grid = () => {
       </StyledGrid>
     </div>
   )
+}
+
+Grid.propTypes = {
+  setOpen: PropTypes.func.isRequired
 }
 
 export default Grid

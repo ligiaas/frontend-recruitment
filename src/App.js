@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <Grid />
+      <Grid setOpen={setOpen} />
       <BagButton open={open} onClick={setOpen} />
       <Bag open={open} setOpen={setOpen} />
     </>

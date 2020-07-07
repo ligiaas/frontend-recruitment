@@ -15,7 +15,6 @@ const Bag = ({ open }) => {
   const screen = useWindowSize()
   const widthSize = screen.width - (screen.width * 0.4)
   const [delected, setDelected] = useState(false)
-  const [total, updateTotal] = useState(0)
 
   const products = useSelector(state => state.bag.products)
   const loading = useSelector(state => state.loading);
