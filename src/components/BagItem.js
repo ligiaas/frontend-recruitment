@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import Proptypes from 'prop-types'
-import Paragraph from '../components/Paragraph'
+import React, { useState } from 'react';
+
+import Proptypes from 'prop-types';
+
+import Paragraph from '../components/Paragraph';
 import {
   StyledBagItem,
   StyledItemButton,
@@ -9,11 +11,12 @@ import {
   StyledBagValue
 } from '../ui/StyledBagItem';
 import { StyledIcon } from '../ui/StyledIcon';
-import IconX from '../assets/x.png'
-import IconXBlack from '../assets/xblack.png'
+
+import IconX from '../assets/x.png';
+import IconXBlack from '../assets/xblack.png';
 
 const BagItem = ({ onClick, request, remove }) => {
-  const [mouseStatus, updateMouseStatus] = useState(false)
+  const [mouseStatus, updateMouseStatus] = useState(false);
   return (
     <StyledBagItem onMouseOver={() => updateMouseStatus(true)} onMouseLeave={() => updateMouseStatus(false)}>
       <StyledItemImage
@@ -40,17 +43,17 @@ const BagItem = ({ onClick, request, remove }) => {
         <Paragraph color="#dfbd00" size={23} decoration={mouseStatus ? 'line-through' : 'none'}>R$ {request.product.price}</Paragraph>
       </StyledBagValue>
     </StyledBagItem>
-  )
-}
+  );
+};
 
 BagItem.default = {
   remove: false
-}
+};
 
 BagItem.propTypes = {
   onClick: Proptypes.func.isRequired,
   remove: Proptypes.bool,
   request: Proptypes.object.isRequired
-}
+};
 
-export default BagItem
+export default BagItem;

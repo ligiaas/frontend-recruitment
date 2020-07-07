@@ -1,7 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StyledHeader, StyledHeaderIcon, StyledTitle, StyledCounter } from '../ui/StyledHeader'
-import IconBag from '../assets/bag.svg'
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
+import { StyledHeader, StyledHeaderIcon, StyledTitle, StyledCounter } from '../ui/StyledHeader';
+
+import IconBag from '../assets/bag.svg';
 
 const Header = ({counter}) => {
   return (
@@ -15,8 +18,8 @@ const Header = ({counter}) => {
         }
         <StyledTitle>sacola</StyledTitle>
       </StyledHeader>
-  )
-}
+  );
+};
 
 Header.default = {
   counter: 0
@@ -26,4 +29,4 @@ Header.propTypes = {
   counter: PropTypes.number,
 };
 
-export default Header
+export default Header;

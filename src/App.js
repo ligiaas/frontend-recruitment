@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Bag from '../src/container/Bag'
-import BagButton from '../src/components/BagButton'
-import Grid from '../src/container/Grid'
+
+import Bag from '../src/container/Bag';
+import BagButton from '../src/components/BagButton';
+import Grid from '../src/container/Grid';
 
 function App() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -13,6 +14,6 @@ function App() {
       <Bag open={open} setOpen={setOpen} />
     </>
   );
-}
+};
 
 export default App;

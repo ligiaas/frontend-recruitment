@@ -1,44 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { bagListProduct, bagRemoveProduct } from '../store/actions';
+
 import Proptypes from 'prop-types';
+
 import useWindowSize from '../utils/use-window-size';
+
+import BagItem from '../components/BagItem';
 import Header from '../components/Header';
+import Paragraph from '../components/Paragraph';
+
 import { StyledBag } from '../ui/StyledBag';
 import { StyledBagSubTotal, StyledSubTotalValue } from '../ui/StyledBagSubTotal';
 import { StyledButton } from '../ui/StyledButton';
-import BagItem from '../components/BagItem'
-import Paragraph from '../components/Paragraph';
 
 const Bag = ({ open }) => {
-  const screen = useWindowSize()
-  const widthSize = screen.width - (screen.width * 0.4)
-  const [delected, setDelected] = useState(false)
+  const screen = useWindowSize();
+  const widthSize = screen.width - (screen.width * 0.4);
+  const [delected, setDelected] = useState(false);
 
-  const products = useSelector(state => state.bag.products)
+  const products = useSelector(state => state.bag.products);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(bagListProduct())
-  }, [dispatch])
+    dispatch(bagListProduct());
+  }, [dispatch]);
 
   const deleteProduct = product => {
-    setDelected(true)
-    dispatch(bagRemoveProduct(product))
-  }
+    setDelected(true);
+    dispatch(bagRemoveProduct(product));
+  };
 
   const getTotal = () => {
     const itemValue = products.map(item => (
       item.product.price * item.amount
-    ))
-    return itemValue.reduce((amount, value) => amount + value, 0).toFixed(2)
-  }
+    ));
+    return itemValue.reduce((amount, value) => amount + value, 0).toFixed(2);
+  };
 
   const parcelTotal = () => {
     const parcel = getTotal() / 10
-    return parcel.toFixed(2)
-  }
+    return parcel.toFixed(2);
+  };
 
   return (
     <StyledBag open={open} height={screen.height} width={open ? widthSize : 0}>
@@ -91,10 +95,10 @@ const Bag = ({ open }) => {
       </StyledButton>
     </StyledBag>
   )
-}
+};
 
 Bag.propTypes = {
   open: Proptypes.bool.isRequired
-}
+};
 
-export default Bag
+export default Bag;

@@ -1,6 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StyledParagraph } from '../ui/StyledParagraph'
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
+import { StyledParagraph } from '../ui/StyledParagraph';
 
 const Paragraph = ({ align, children, color, decoration, size, transform }) => {
   return (
@@ -13,8 +15,8 @@ const Paragraph = ({ align, children, color, decoration, size, transform }) => {
     >
       {children}
     </StyledParagraph>
-  )
-}
+  );
+};
 
 Paragraph.default = {
   align: 'left',
@@ -22,7 +24,7 @@ Paragraph.default = {
   decoration: 'none',
   size: 16,
   transform: 'none'
-}
+};
 
 Paragraph.propTypes = {
   align: PropTypes.string,
@@ -31,6 +33,6 @@ Paragraph.propTypes = {
   decoration: PropTypes.string,
   size: PropTypes.number,
   transform: PropTypes.string
-}
+};
 
-export default Paragraph
+export default Paragraph;

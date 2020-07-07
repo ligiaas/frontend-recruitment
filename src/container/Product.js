@@ -1,52 +1,51 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import Paragraph from '../components/Paragraph'
-import Modal from '../components/Modal'
-import Price from '../components/Price'
+import PropTypes from 'prop-types';
 
-import { StyledImage } from '../ui/StyledImage'
-import { StyledBar } from '../ui/StyledBar'
-import { StyledProduct } from '../ui/StyledProduct'
-import { StyledButton } from '../ui/StyledButton'
-import { BodyModal, StyledSize } from '../ui/StyledModal'
-import { images }from '../utils/images'
+import { images }from '../utils/images';
+
+import Modal from '../components/Modal';
+import Paragraph from '../components/Paragraph';
+import Price from '../components/Price';
+
+import { BodyModal, StyledSize } from '../ui/StyledModal';
+import { StyledBar } from '../ui/StyledBar';
+import { StyledButton } from '../ui/StyledButton';
+import { StyledImage } from '../ui/StyledImage';
+import { StyledProduct } from '../ui/StyledProduct';
 
 const Product = ({ product }) => {
+  const [showModal, updateShowModal] = useState(false);
+  const [size, setSize] = useState('');
+  const [amount, setAmount] = useState(1);
 
-  const [showModal, updateShowModal] = useState(false)
-  const [size, setSize] = useState('')
-  const [request, setRequest] = useState({})
-  const [amount, setAmount] = useState(1)
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleOpenModal = () => {
-    updateShowModal(true)
-  }
+    updateShowModal(true);
+  };
 
   const sendToBag = () => {
-    setRequest({size, product, amount, image: images[product.id]})
     if (size && amount >= 1) {
       dispatch({
         type: 'BAG_ADD_PRODUCT',
         payload: {size, product, amount, image: images[product.id]}
-      })
-      handleCloseModal()
-      reset()
-    }
-  }
+      });
+      handleCloseModal();
+      reset();
+    };
+  };
 
   const reset = () => {
-    setSize('')
-    setAmount(0)
-  }
+    setSize('');
+    setAmount(0);
+  };
 
   const handleCloseModal = () => {
-    updateShowModal(false)
-    reset()
-  }
+    updateShowModal(false);
+    reset();
+  };
 
   return (
     <>
@@ -93,11 +92,11 @@ const Product = ({ product }) => {
         </BodyModal>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 Product.propTypes = {
   product: PropTypes.object.isRequired
-}
+};
 
-export default Product
+export default Product;

@@ -1,12 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import {
   ButtonModal,
   FooterModal,
   Content,
   ModalContainer,
   StyledCenter
-} from '../ui/StyledModal'
+} from '../ui/StyledModal';
 
 const Modal = ({ close, children, confirmationAction, openModal }) => {
   return (
@@ -25,18 +27,18 @@ const Modal = ({ close, children, confirmationAction, openModal }) => {
         </ModalContainer>
       ) : null}
     </>
-  )
-}
+  );
+};
 
 Modal.defaultProps = {
   close: null,
   item: null
-}
+};
 
 Modal.propTypes = {
   children: PropTypes.array.isRequired,
   close: PropTypes.func,
   openModal: PropTypes.bool.isRequired
-}
+};
 
-export default Modal
+export default Modal;
