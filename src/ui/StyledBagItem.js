@@ -19,6 +19,9 @@ const StyledItemButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 `
 
 const StyledItemImage = styled.img`

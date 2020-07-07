@@ -6,6 +6,7 @@ const StyledHeader = styled.div`
   display: flex;
   height: 140px;
   justify-content: center;
+  margin-bottom: 40px;
 `
 
 const StyledHeaderIcon = styled(StyledIcon)`
