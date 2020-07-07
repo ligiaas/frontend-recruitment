@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 const StyledBagItem = styled.div`
-  background: transparent;
   align-items: center;
+  background: transparent;
   border-top: 2px solid rgba(0, 0, 0, 0.4);
   display: grid;
   grid-template-columns: 80px auto 95px;
-  justify-content: normal;
   height: 104px;
+  justify-content: normal;
   transition: all 0.3s linear;
   &:hover {
     background: rgba(0, 0, 0, 0.4)
@@ -20,6 +20,7 @@ const StyledItemButton = styled.button`
   border: none;
   cursor: pointer;
 `
+
 const StyledItemImage = styled.img`
   height: 70px;
   margin: auto 0;
@@ -32,6 +33,7 @@ const StyledBagProduct = styled.div`
   flex-direction: column;
   justify-content: center;
 `
+
 const StyledBagValue = styled.div`
   align-items: flex-end;
   display: flex;
