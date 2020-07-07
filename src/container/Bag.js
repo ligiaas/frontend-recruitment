@@ -11,14 +11,11 @@ import BagItem from '../components/BagItem'
 import Paragraph from '../components/Paragraph';
 
 const Bag = ({ open }) => {
-
   const screen = useWindowSize()
   const widthSize = screen.width - (screen.width * 0.4)
   const [delected, setDelected] = useState(false)
 
   const products = useSelector(state => state.bag.products)
-  const loading = useSelector(state => state.loading);
-  const error = useSelector(state => state.error);
 
   const dispatch = useDispatch()
 
@@ -26,13 +23,8 @@ const Bag = ({ open }) => {
     dispatch(bagListProduct())
   }, [dispatch])
 
-  if (loading) { return 'loading...' }
-
-  if (error) { return 'ooops!' }
-
   const deleteProduct = product => {
     setDelected(true)
-    console.log(product)
     dispatch(bagRemoveProduct(product))
   }
 

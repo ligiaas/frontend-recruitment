@@ -4,20 +4,15 @@ import {
   FETCH_PRODUCTS_FAILED,
 
   BAG_ADD_PRODUCT,
-  BAG_ADD_PRODUCT_SUCCESS,
-  BAG_ADD_PRODUCT_FAILED,
-
   BAG_LIST_PRODUCT,
-  BAG_LIST_PRODUCT_FAILED,
-  BAG_LIST_PRODUCT_SUCCESS,
-
-  BAG_REMOVE_PRODUCT,
-  BAG_REMOVE_PRODUCT_FAILED,
-  BAG_REMOVE_PRODUCT_SUCCESS
+  BAG_REMOVE_PRODUCT
 } from './constants'
 
 export const initialStateBag = {
-  products: []
+  products: [],
+  error: null,
+  loading: false,
+  success: false
 }
 
 const initialStateProducts = {
@@ -41,8 +36,7 @@ export function productReducer(state = initialStateProducts, { type, payload }) 
       return {
         ...state,
         products: payload,
-        loading: false,
-        error: null,
+        success: true
       }
     }
     case FETCH_PRODUCTS_FAILED: {
@@ -50,7 +44,6 @@ export function productReducer(state = initialStateProducts, { type, payload }) 
         ...state,
         products: null,
         error: payload,
-        loading: false,
       }
     }
     default:
@@ -74,16 +67,14 @@ export function bagReducer(state = initialStateBag, { type, payload }) {
           ...state.products,
           payload
         ],
-        error: false,
-        loading: true
+        success: true
       }
     }
     case BAG_REMOVE_PRODUCT: {
       return {
         ...state,
         products: removeProduct(state.products, payload),
-        error: null,
-        loading: false
+        success: true
       }
     }
     case BAG_LIST_PRODUCT: {
@@ -92,8 +83,7 @@ export function bagReducer(state = initialStateBag, { type, payload }) {
         products: [
           ...state.products
         ],
-        error: null,
-        loading: false
+        loading: true
       }
     }
     default:
